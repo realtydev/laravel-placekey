@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Realtydev\LaravelPlacekey\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelPlacekeyCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-placekey';
 
     public $description = 'My command';
 
