@@ -2,9 +2,9 @@
 
 namespace Realtydev\LaravelPlacekey;
 
+use Realtydev\LaravelPlacekey\Commands\LaravelPlacekeyCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Realtydev\LaravelPlacekey\Commands\LaravelPlacekeyCommand;
 
 class LaravelPlacekeyServiceProvider extends PackageServiceProvider
 {
