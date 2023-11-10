@@ -26,7 +26,6 @@ class PlacekeyService
         }
     }
 
-
     public function getPlacekeyForCoordinates($latitude, $longitude, $queryId = null)
     {
         $query = [
