@@ -8,9 +8,9 @@ class LaravelPlacekey
 {
     protected $service;
 
-    public function __construct(PlacekeyService $service)
+    public function __construct()
     {
-        $this->service = $service;
+        $this->service = app(PlacekeyService::class);
     }
 
     // Add methods to interact with the service
