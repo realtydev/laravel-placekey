@@ -35,11 +35,11 @@ php artisan vendor:publish --tag="laravel-placekey-views"
 ```php
 $laravelPlacekey = new Realtydev\LaravelPlacekey\LaravelPlacekey;
 echo $laravelPlacekey->getPlacekeyForAddress(
-  $street,
-  $city,
-  $region,
-  $postal_code, 
-  $countryCode
+  "1543 Mission Street, Floor 3",
+  "San Francisco",
+  "CA",
+  "94105", 
+  "US"
 );
 ```
 
