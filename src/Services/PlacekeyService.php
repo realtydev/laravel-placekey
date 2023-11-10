@@ -9,13 +9,15 @@ use Realtydev\LaravelPlacekey\Exceptions\PlacekeyApiException;
 class PlacekeyService
 {
     protected $client;
-
-    public function __construct()
+    protected $config;
+    public function __construct(config)
     {
+        $this->config = $config;
+
         $this->client = new Client([
             'base_uri' => 'https://api.placekey.io/v1/',
             'headers' => [
-                'apikey' => config('placekey.api_key'),
+                'apikey' => $this->config['api_key'],
                 'Content-Type' => 'application/json',
             ],
         ]);
