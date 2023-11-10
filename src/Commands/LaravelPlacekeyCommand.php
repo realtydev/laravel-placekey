@@ -23,7 +23,6 @@ class LaravelPlacekeyCommand extends Command
 
     protected $service;
 
-
     public function __construct(PlacekeyService $service)
     {
         $this->service = $service;
@@ -47,6 +46,7 @@ class LaravelPlacekeyCommand extends Command
                         $response = $this->service->getPlacekeyForCoordinates(...$parameters);
                     } else {
                         $this->error('Invalid parameters. The address action requires between 2 to 5 parameters.');
+
                         return;
                     }
                     break;
@@ -55,6 +55,7 @@ class LaravelPlacekeyCommand extends Command
                         $response = $this->service->getPlacekeyForAddress(...$parameters);
                     } else {
                         $this->error('Invalid parameters. The address action requires between 2 to 5 parameters.');
+
                         return;
                     }
                     break;
@@ -63,11 +64,13 @@ class LaravelPlacekeyCommand extends Command
                         $response = $this->service->getActivePlacekeyAndPredecessors(...$parameters);
                     } else {
                         $this->error('Invalid parameters. The address action requires between 2 to 5 parameters.');
+
                         return;
                     }
                     break;
                 default:
                     $this->error('Invalid action. Valid actions are get, query, address, lineage.');
+
                     return;
             }
 
