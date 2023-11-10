@@ -31,5 +31,4 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
             return new PlacekeyService($app['config']['placekey']);
         });
     }
-
 }

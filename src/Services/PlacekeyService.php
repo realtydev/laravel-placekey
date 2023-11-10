@@ -9,7 +9,9 @@ use Realtydev\LaravelPlacekey\Exceptions\PlacekeyApiException;
 class PlacekeyService
 {
     protected $client;
+
     protected $config;
+
     public function __construct()
     {
 
@@ -55,7 +57,6 @@ class PlacekeyService
 
     public function getCurrentActivePlacekeyAndPredecessors($placekeys)
     {
-
 
         return $this->sendRequest('lineage', [
             'queries' => $placekeys,
