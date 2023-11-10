@@ -34,13 +34,21 @@ php artisan vendor:publish --tag="laravel-placekey-views"
 
 ```php
 $laravelPlacekey = new Realtydev\LaravelPlacekey\LaravelPlacekey;
-echo $laravelPlacekey->getPlacekeyForAddress(
+
+$laravelPlacekey->getPlacekeyForAddress(
   "1543 Mission Street, Floor 3",
   "San Francisco",
   "CA",
   "94105", 
   "US"
 );
+```
+
+```json
+{
+  "query_id": "0",
+  "placekey": "22k@5vg-7gq-5mk"
+}
 ```
 
 ## Testing
