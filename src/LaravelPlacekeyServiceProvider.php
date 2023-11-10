@@ -3,8 +3,10 @@
 namespace Realtydev\LaravelPlacekey;
 
 use Realtydev\LaravelPlacekey\Commands\LaravelPlacekeyCommand;
+use Realtydev\LaravelPlacekey\Commands\LaravelPlacekeyInstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Realtydev\LaravelPlacekey\Services\PlacekeyService;
 
 class LaravelPlacekeyServiceProvider extends PackageServiceProvider
 {
@@ -18,8 +20,39 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-placekey')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-placekey_table')
-            ->hasCommand(LaravelPlacekeyCommand::class);
+            ->hasCommands([LaravelPlacekeyInstallCommand::class,LaravelPlacekeyCommand::class]);
+    }
+
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../config/placekey.php' => config_path('placekey.php'),
+        ], 'config');
+
+        $this->loadRoutesFrom(__DIR__.'/routes/api.php');
+
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/placekey.php',
+            'placekey'
+        );
+
+        $this->app->singleton('placekey', function ($app) {
+            return new PlacekeyService($app['config']['placekey']);
+        });
     }
 }
