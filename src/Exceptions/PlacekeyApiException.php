@@ -50,11 +50,16 @@ class PlacekeyApiException extends Exception
      */
     public function render($request)
     {
-        return response()->json([
+        $content = [
             'error' => [
                 'message' => $this->message,
                 'status_code' => $this->code,
             ],
-        ], $this->code);
+        ];
+
+        $response = response()->make($content, $this->code);
+        $response->header('Content-Type', 'application/json');
+
+        return $response;
     }
 }
