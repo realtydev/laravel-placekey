@@ -3,6 +3,7 @@
 namespace Realtydev\LaravelPlacekey\Commands;
 
 use Illuminate\Console\Command;
+use Realtydev\LaravelPlacekey\Services\PlacekeyService;
 
 class LaravelPlacekeyCommand extends Command
 {
@@ -20,6 +21,14 @@ class LaravelPlacekeyCommand extends Command
      */
     protected $description = 'Interact with the Placekey API';
 
+    protected $service;
+
+
+    public function __construct(PlacekeyService $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Execute the console command.
      *
@@ -32,21 +41,33 @@ class LaravelPlacekeyCommand extends Command
 
         try {
             switch ($action) {
-                case 'get':
-                    $response = Placekey::getPlacekey($parameters);
-                    break;
-                case 'query':
-                    $response = Placekey::getPlacekeyWithQueryId($parameters);
+
+                case 'coordinates':
+                    if (is_array($parameters) && count($parameters) >= 2 && count($parameters) <= 5) {
+                        $response = $this->service->getPlacekeyForCoordinates(...$parameters);
+                    } else {
+                        $this->error('Invalid parameters. The address action requires between 2 to 5 parameters.');
+                        return;
+                    }
                     break;
                 case 'address':
-                    $response = Placekey::getPlacekeyForAddress($parameters);
+                    if (is_array($parameters) && count($parameters) >= 2 && count($parameters) <= 5) {
+                        $response = $this->service->getPlacekeyForAddress(...$parameters);
+                    } else {
+                        $this->error('Invalid parameters. The address action requires between 2 to 5 parameters.');
+                        return;
+                    }
                     break;
                 case 'lineage':
-                    $response = Placekey::getActivePlacekeyAndPredecessors($parameters);
+                    if (is_array($parameters) && count($parameters) >= 2 && count($parameters) <= 5) {
+                        $response = $this->service->getActivePlacekeyAndPredecessors(...$parameters);
+                    } else {
+                        $this->error('Invalid parameters. The address action requires between 2 to 5 parameters.');
+                        return;
+                    }
                     break;
                 default:
                     $this->error('Invalid action. Valid actions are get, query, address, lineage.');
-
                     return;
             }
 
