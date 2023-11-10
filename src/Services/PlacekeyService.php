@@ -16,7 +16,7 @@ class PlacekeyService
     {
 
         $this->client = new Client([
-            'base_uri' => 'https://api.placekey.io/v1/',
+            'base_uri' => config('placekey.api_url'),
             'headers' => [
                 'apikey' => config('placekey.api_key'),
                 'Content-Type' => 'application/json',
