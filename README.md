@@ -24,13 +24,6 @@ You can publish the config file with:
 php artisan vendor:publish --tag="laravel-placekey-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 Optionally, you can publish the views using
 
 ```bash
@@ -60,18 +53,10 @@ composer test
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
 - [Alex Gibson](https://github.com/realtydev)
-- [All Contributors](../../contributors)
 
 ## License
 
