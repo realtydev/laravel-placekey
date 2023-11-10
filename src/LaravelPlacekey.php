@@ -17,6 +17,4 @@ class LaravelPlacekey
     {
         return $this->service->getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode);
     }
-
-
 }
