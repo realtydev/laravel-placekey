@@ -16,8 +16,8 @@ class PlacekeyService
             'base_uri' => 'https://api.placekey.io/v1/',
             'headers' => [
                 'apikey' => config('placekey.api_key'),
-                'Content-Type' => 'application/json'
-            ]
+                'Content-Type' => 'application/json',
+            ],
         ]);
     }
 
@@ -33,10 +33,9 @@ class PlacekeyService
         }
 
         return $this->sendRequest('placekey', [
-            "query" => $query
+            'query' => $query,
         ]);
     }
-
 
     public function getPlacekeyForAddress($streetAddress, $city, $region, $postalCode, $countryCode)
     {
@@ -45,20 +44,22 @@ class PlacekeyService
             'city' => $city,
             'region' => $region,
             'postal_code' => $postalCode,
-            'iso_country_code' => $countryCode ?? 'US'
+            'iso_country_code' => $countryCode ?? 'US',
         ];
+
         return $this->sendRequest('placekey', [
-           'query'=> $query
+            'query' => $query,
         ]);
     }
 
     public function getCurrentActivePlacekeyAndPredecessors($placekeys)
     {
         $query = [
-            'queries' => $placekeys
+            'queries' => $placekeys,
         ];
+
         return $this->sendRequest('lineage', [
-            'queries' => $placekeys
+            'queries' => $placekeys,
         ]);
     }
 
@@ -66,7 +67,7 @@ class PlacekeyService
     {
         try {
             $response = $this->client->post($endpoint, [
-                'json' => $body
+                'json' => $body,
             ]);
 
             return json_decode($response->getBody()->getContents(), true);

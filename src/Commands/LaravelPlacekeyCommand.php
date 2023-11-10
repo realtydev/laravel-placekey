@@ -7,10 +7,10 @@ use Illuminate\Console\Command;
 class LaravelPlacekeyCommand extends Command
 {
     /**
-      * The name and signature of the console command.x
-      *
-      * @var string
-      */
+     * The name and signature of the console command.x
+     *
+     * @var string
+     */
     protected $signature = 'placekey:interact {action} {parameters*}';
 
     /**
@@ -46,13 +46,14 @@ class LaravelPlacekeyCommand extends Command
                     break;
                 default:
                     $this->error('Invalid action. Valid actions are get, query, address, lineage.');
+
                     return;
             }
 
             $this->info('Response from Placekey API:');
             $this->line(json_encode($response, JSON_PRETTY_PRINT));
         } catch (\Exception $e) {
-            $this->error('Error interacting with Placekey API: ' . $e->getMessage());
+            $this->error('Error interacting with Placekey API: '.$e->getMessage());
         }
     }
 }
