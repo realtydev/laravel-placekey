@@ -13,5 +13,10 @@ class LaravelPlacekey
         $this->service = app(PlacekeyService::class);
     }
 
-    // Add methods to interact with the service
+    public function getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode)
+    {
+        return $this->service->getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode);
+    }
+
+
 }
