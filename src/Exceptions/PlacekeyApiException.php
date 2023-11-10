@@ -53,8 +53,8 @@ class PlacekeyApiException extends Exception
         return response()->json([
             'error' => [
                 'message' => $this->message,
-                'status_code' => $this->code
-            ]
+                'status_code' => $this->code,
+            ],
         ], $this->code);
     }
 }
