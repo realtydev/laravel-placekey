@@ -14,12 +14,13 @@ class PlacekeyService
 
     public function __construct()
     {
+        $this->config = config('placekey');
+
         if (self::$client === null) {
-            $config = config('placekey');
             self::$client = new Client([
-                'base_uri' => $config['api_url'],
+                'base_uri' => $this->config['api_url'].'/'.$this->config['api_version'].'/',
                 'headers' => [
-                    'apikey' => $config['api_key'],
+                    'apikey' => $this->config['api_key'],
                     'Content-Type' => 'application/json',
                 ],
             ]);
