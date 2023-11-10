@@ -8,21 +8,24 @@ use Realtydev\LaravelPlacekey\Exceptions\PlacekeyApiException;
 
 class PlacekeyService
 {
-    protected $client;
+    protected static $client;
 
     protected $config;
 
     public function __construct()
     {
-
-        $this->client = new Client([
-            'base_uri' => config('placekey.api_url'),
-            'headers' => [
-                'apikey' => config('placekey.api_key'),
-                'Content-Type' => 'application/json',
-            ],
-        ]);
+        if (self::$client === null) {
+            $config = config('placekey');
+            self::$client = new Client([
+                'base_uri' => $config['api_url'],
+                'headers' => [
+                    'apikey' => $config['api_key'],
+                    'Content-Type' => 'application/json',
+                ],
+            ]);
+        }
     }
+
 
     public function getPlacekeyForCoordinates($latitude, $longitude, $queryId = null)
     {
@@ -66,7 +69,7 @@ class PlacekeyService
     protected function sendRequest($endpoint, $body)
     {
         try {
-            $response = $this->client->post($endpoint, [
+            $response = self::$client->post($endpoint, [
                 'json' => $body,
             ]);
 
