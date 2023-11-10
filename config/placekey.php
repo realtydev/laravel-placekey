@@ -7,9 +7,9 @@ return [
     | Placekey API Key
     |--------------------------------------------------------------------------
     |
-    | This value is your Placekey API key. This value is used when making
-    | HTTP requests to the Placekey API. You must set this in your
-    | environment file or in the Placekey service configuration.
+    | This value is the API key provided by Placekey. It is used when making
+    | requests to the Placekey API. You can get your API key from the Placekey
+    | dashboard after creating an account.
     |
     */
 
@@ -17,34 +17,27 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Placekey API Base URI
+    | Placekey API URL
     |--------------------------------------------------------------------------
     |
-    | This value is the base URI for the Placekey API. This value is used when
-    | making HTTP requests to the Placekey API. You can modify this in your
-    | environment file or in the Placekey service configuration.
+    | This value is the base URL for the Placekey API. It is used when making
+    | requests to the Placekey API. You should not need to change this value.
     |
     */
 
-    'base_uri' => env('PLACEKEY_BASE_URI', 'https://api.placekey.io/v1/'),
+    'api_url' => 'https://api.placekey.io',
 
     /*
     |--------------------------------------------------------------------------
-    | Placekey API Endpoints
+    | Placekey API Version
     |--------------------------------------------------------------------------
     |
-    | These values are the endpoints for the Placekey API. These values are used
-    | when making HTTP requests to the Placekey API. You can modify these in your
-    | environment file or in the Placekey service configuration.
+    | This value is the version of the Placekey API that the package will use.
+    | It is used when making requests to the Placekey API. You should not need
+    | to change this value.
     |
     */
 
-    'endpoints' => [
-        'placekey_lookup' => 'placekey',
-        'lineage' => 'lineage',
-        'batch_lookup' => 'placekey/batch',
-        'resolve' => 'resolve',
-        'reverse_geocode' => 'reverse',
-    ],
+    'api_version' => 'v1',
 
 ];

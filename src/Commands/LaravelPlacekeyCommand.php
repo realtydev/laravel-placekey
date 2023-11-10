@@ -25,6 +25,7 @@ class LaravelPlacekeyCommand extends Command
 
     public function __construct(PlacekeyService $service)
     {
+        parent::__construct();
         $this->service = $service;
     }
 

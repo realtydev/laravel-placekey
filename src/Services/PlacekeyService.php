@@ -10,14 +10,13 @@ class PlacekeyService
 {
     protected $client;
     protected $config;
-    public function __construct(config)
+    public function __construct()
     {
-        $this->config = $config;
 
         $this->client = new Client([
             'base_uri' => 'https://api.placekey.io/v1/',
             'headers' => [
-                'apikey' => $this->config['api_key'],
+                'apikey' => config('placekey.api_key'),
                 'Content-Type' => 'application/json',
             ],
         ]);
@@ -56,9 +55,7 @@ class PlacekeyService
 
     public function getCurrentActivePlacekeyAndPredecessors($placekeys)
     {
-        $query = [
-            'queries' => $placekeys,
-        ];
+
 
         return $this->sendRequest('lineage', [
             'queries' => $placekeys,
