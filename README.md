@@ -33,7 +33,7 @@ php artisan vendor:publish --tag="laravel-placekey-views"
 ## Usage
 
 ```php
-$laravelPlacekey = new Realtydev\LaravelPlacekey();
+$laravelPlacekey = new Realtydev\LaravelPlacekey\LaravelPlacekey;
 echo $laravelPlacekey->getPlacekeyForAddress(
   $street,
   $city,
