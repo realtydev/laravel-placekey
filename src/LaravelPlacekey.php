@@ -13,7 +13,7 @@ class LaravelPlacekey
     public function __construct($config)
     {
         $this->config = $config;
-        $this->service = app(PlacekeyService::class, ['config' => $config]);
+        $this->service = app()->makeWith(LaravelPlacekey::class, ['config' => $config]);
     }
 
     public function getPlacekeyForCoordinates($latitude, $longitude, $queryId = null)
