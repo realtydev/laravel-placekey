@@ -71,11 +71,17 @@ class PlacekeyService
         try {
             $response = self::$client->post($endpoint, [
                 'json' => $body,
+                'http_errors' => false // or true depends on how you want to handle http exceptions.
             ]);
+
+            if ($response->getStatusCode() >= 400) {
+                throw new PlacekeyApiException($response->getReasonPhrase(), $response->getStatusCode());
+            }
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (GuzzleException $e) {
             throw new PlacekeyApiException($e->getMessage(), $e->getCode());
         }
     }
+
 }
