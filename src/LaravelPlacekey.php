@@ -6,14 +6,12 @@ use Realtydev\LaravelPlacekey\Services\PlacekeyService;
 
 class LaravelPlacekey
 {
-
     protected $placekeyService;
 
     public function __construct(PlacekeyService $placekeyService)
     {
         $this->placekeyService = $placekeyService;
     }
-
 
     public function getPlacekeyForCoordinates($latitude, $longitude, $queryId = null)
     {
