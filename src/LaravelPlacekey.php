@@ -7,10 +7,12 @@ use Realtydev\LaravelPlacekey\Services\PlacekeyService;
 class LaravelPlacekey
 {
     protected $service;
+    protected $config;
 
-    public function __construct()
+    public function __construct($config)
     {
-        $this->service = app(PlacekeyService::class);
+        $this->config = $config;
+        $this->service = app(PlacekeyService::class, ['config' => $config]);
     }
 
     public function getPlacekeyForCoordinates($latitude, $longitude, $queryId = null)
