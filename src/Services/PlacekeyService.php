@@ -29,6 +29,10 @@ class PlacekeyService
 
     public function getPlacekeyForCoordinates($latitude, $longitude, $queryId = null)
     {
+        if ($latitude === null || $longitude === null) {
+            throw new \InvalidArgumentException('Latitude and longitude are required');
+        }
+
         $query = [
             'latitude' => $latitude,
             'longitude' => $longitude,
@@ -45,6 +49,9 @@ class PlacekeyService
 
     public function getPlacekeyForAddress($streetAddress, $city, $region, $postalCode, $countryCode)
     {
+        if ($streetAddress === null || $city === null || $region === null || $postalCode === null) {
+            throw new \InvalidArgumentException('Street address, city, region, and postal code are required');
+        }
         $query = [
             'street_address' => $streetAddress,
             'city' => $city,
