@@ -22,11 +22,8 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
             ->name('laravel-placekey')
             ->hasConfigFile()
             ->publishesServiceProvider('PlacekeyService')
-            ->hasInstallCommand(function(InstallCommand $command) {
-                $command
-                    ->publishConfigFile()
-                    ->copyAndRegisterServiceProviderInApp()
-
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command->publishConfigFile()->copyAndRegisterServiceProviderInApp();
             });
 
 
