@@ -23,9 +23,15 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
+                    ->startWith(function (InstallCommand $command) {
+                        $command->info('Hello, and welcome to my great new package!');
+                    })
                     ->publishConfigFile()
                     ->copyAndRegisterServiceProviderInApp()
-                    ->askToStarRepoOnGitHub('realtydev/laravel-placekey');
+                    ->askToStarRepoOnGitHub('realtydev/laravel-placekey')
+                    ->endWith(function (InstallCommand $command) {
+                        $command->info('Have a great day!');
+                    });
             });
 
     }
@@ -33,7 +39,7 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         $this->app->singleton(PlacekeyService::class, function ($app) {
-            $config = $app['config']->get('placekey');
+            $config = $app['config']->get('laravel-placekey');
 
             return new PlacekeyService($config);
         });
