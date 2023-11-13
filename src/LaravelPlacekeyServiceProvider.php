@@ -7,6 +7,7 @@ use Realtydev\LaravelPlacekey\Commands\LaravelPlacekeyInstallCommand;
 use Realtydev\LaravelPlacekey\Services\PlacekeyService;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 
 class LaravelPlacekeyServiceProvider extends PackageServiceProvider
 {
@@ -20,7 +21,14 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-placekey')
             ->hasConfigFile()
-            ->hasCommands([LaravelPlacekeyInstallCommand::class, LaravelPlacekeyCommand::class]);
+            ->publishesServiceProvider('PlacekeyService')
+            ->hasInstallCommand(function(InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->copyAndRegisterServiceProviderInApp()
+
+            });
+
 
     }
 
@@ -30,7 +38,9 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
             return new LaravelPlacekey();
         });
         $this->app->singleton('placekey', function ($app) {
-            return new PlacekeyService($app['config']['placekey']);
+            $config = $app['config']['placekey']; // Access the 'placekey' configuration
+
+            return new PlacekeyService($config);
         });
     }
 }
