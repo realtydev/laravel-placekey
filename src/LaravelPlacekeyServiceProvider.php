@@ -22,7 +22,7 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->startWith(function (InstallCommand $command) {
-                        $command->info('Hello, and welcome to my great new package!');
+                        $command->info('Hello, and welcome laravel placekey!');
                     })
                     ->publishConfigFile()
                     ->copyAndRegisterServiceProviderInApp()
