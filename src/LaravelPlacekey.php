@@ -20,7 +20,12 @@ class LaravelPlacekey
 
     public function getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode)
     {
-        return $this->placekeyService->getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode);
+        try {
+            $result = $this->placekeyService->getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode);
+        } catch (\TypeError $e) {
+            throw new \InvalidArgumentException('Invalid arguments provided. Please ensure you provide a street address, city, region, postal code, and country code.');
+        }
+        return $result;
     }
 
     public function getCurrentActivePlacekeyAndPredecessors($placekeys)
