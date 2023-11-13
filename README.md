@@ -30,7 +30,6 @@ php artisan vendor:publish --tag="laravel-placekey-config"
 ```php
 use LaravelPlacekey;
 
-
 LaravelPlacekey::getPlacekeyForAddress(
   "1543 Mission Street, Floor 3",
   "San Francisco",
