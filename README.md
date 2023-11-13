@@ -24,18 +24,13 @@ You can publish the config file with:
 php artisan vendor:publish --tag="laravel-placekey-config"
 ```
 
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-placekey-views"
-```
 
 ## Usage
 
 ```php
-$laravelPlacekey = new Realtydev\LaravelPlacekey\LaravelPlacekey;
+use LaravelPlacekey;
 
-$laravelPlacekey->getPlacekeyForAddress(
+LaravelPlacekey::getPlacekeyForAddress(
   "1543 Mission Street, Floor 3",
   "San Francisco",
   "CA",
