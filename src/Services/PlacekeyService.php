@@ -14,6 +14,9 @@ class PlacekeyService
 
     public function __construct($config)
     {
+        if (!isset($config['api_url'], $config['api_version'], $config['api_key'])) {
+            throw new \InvalidArgumentException('Config data is missing or incomplete');
+        }
         $this->config = $config;
 
         if (self::$client === null) {
