@@ -38,6 +38,7 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
         });
         $this->app->singleton(LaravelPlacekey::class, function ($app) {
             $config = $app['config']['placekey']; // Access the 'placekey' configuration
+
             return new LaravelPlacekey($config);
         });
     }
