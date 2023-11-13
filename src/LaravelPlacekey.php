@@ -2,8 +2,6 @@
 
 namespace Realtydev\LaravelPlacekey;
 
-use Realtydev\LaravelPlacekey\Services\PlacekeyService;
-
 class LaravelPlacekey
 {
     protected $service;
