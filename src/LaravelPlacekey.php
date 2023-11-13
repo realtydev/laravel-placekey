@@ -7,6 +7,7 @@ use Realtydev\LaravelPlacekey\Services\PlacekeyService;
 class LaravelPlacekey
 {
     protected $service;
+
     protected $config;
 
     public function __construct($config)
