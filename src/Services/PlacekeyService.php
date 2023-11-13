@@ -12,9 +12,9 @@ class PlacekeyService
 
     protected $config;
 
-    public function __construct()
+    public function __construct($config)
     {
-        $this->config = config('placekey');
+        $this->config = $config;
 
         if (self::$client === null) {
             self::$client = new Client([

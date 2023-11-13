@@ -30,7 +30,7 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
             return new LaravelPlacekey();
         });
         $this->app->singleton('placekey', function ($app) {
-            return new PlacekeyService();
+            return new PlacekeyService($app['config']['placekey']);
         });
     }
 }
