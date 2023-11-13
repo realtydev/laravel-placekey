@@ -25,6 +25,7 @@ class LaravelPlacekey
         } catch (\TypeError $e) {
             throw new \InvalidArgumentException('Invalid arguments provided. Please ensure you provide a street address, city, region, postal code, and country code.');
         }
+
         return $result;
     }
 
