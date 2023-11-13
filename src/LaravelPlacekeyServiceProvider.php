@@ -7,6 +7,7 @@ use Realtydev\LaravelPlacekey\Commands\LaravelPlacekeyInstallCommand;
 use Realtydev\LaravelPlacekey\Services\PlacekeyService;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 
 class LaravelPlacekeyServiceProvider extends PackageServiceProvider
 {
@@ -20,7 +21,12 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-placekey')
             ->hasConfigFile()
-            ->hasCommands([LaravelPlacekeyInstallCommand::class, LaravelPlacekeyCommand::class]);
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->copyAndRegisterServiceProviderInApp()
+                    ->askToStarRepoOnGitHub('realtydev/laravel-placekey');
+            });
 
     }
 
