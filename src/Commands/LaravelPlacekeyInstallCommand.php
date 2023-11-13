@@ -41,7 +41,7 @@ class LaravelPlacekeyInstallCommand extends Command
         $this->info('Setting up Placekey API integration...');
 
         $apiKey = $this->ask('What is your Placekey API key?');
-        Config::set('placekey.api_key', $apiKey);
+        Config::set('laravel-placekey.api_key', $apiKey);
 
         $this->info('Placekey API key has been set.');
 
