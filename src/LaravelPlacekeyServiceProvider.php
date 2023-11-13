@@ -26,20 +26,12 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-        $this->app->bind('Realtydev\LaravelPlacekey', function ($app) {
-            $config = $app['config']['placekey']; // Access the 'placekey' configuration
-
-            return new LaravelPlacekey($config);
-        });
-        $this->app->singleton('placekey', function ($app) {
-            $config = $app['config']['placekey']; // Access the 'placekey' configuration
-
-            return new PlacekeyService($config);
-        });
         $this->app->singleton(LaravelPlacekey::class, function ($app) {
-            $config = $app['config']['placekey']; // Access the 'placekey' configuration
+            return new LaravelPlacekey(config('placekey'));
+        });
 
-            return new LaravelPlacekey($config);
+        $this->app->singleton(PlacekeyService::class, function ($app) {
+            return new PlacekeyService(config('placekey'));
         });
     }
 }

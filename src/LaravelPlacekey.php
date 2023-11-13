@@ -6,28 +6,27 @@ use Realtydev\LaravelPlacekey\Services\PlacekeyService;
 
 class LaravelPlacekey
 {
-    protected $service;
 
-    protected $config;
+    protected $placekeyService;
 
-    public function __construct($config)
+    public function __construct(PlacekeyService $placekeyService)
     {
-        $this->config = $config;
-        $this->service = app()->makeWith(LaravelPlacekey::class, ['config' => $config]);
+        $this->placekeyService = $placekeyService;
     }
+
 
     public function getPlacekeyForCoordinates($latitude, $longitude, $queryId = null)
     {
-        return $this->service->getPlacekeyForCoordinates($latitude, $longitude, $queryId);
+        return $this->placekeyService->getPlacekeyForCoordinates($latitude, $longitude, $queryId);
     }
 
     public function getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode)
     {
-        return $this->service->getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode);
+        return $this->placekeyService->getPlacekeyForAddress($street, $city, $region, $postal_code, $countryCode);
     }
 
     public function getCurrentActivePlacekeyAndPredecessors($placekeys)
     {
-        return $this->service->getCurrentActivePlacekeyAndPredecessors($placekeys);
+        return $this->placekeyService->getCurrentActivePlacekeyAndPredecessors($placekeys);
     }
 }
