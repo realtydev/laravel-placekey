@@ -26,7 +26,7 @@ php artisan placekey:install"
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-placekey-config"
+php artisan vendor:publish --tag="placekey-config"
 ```
 
 
