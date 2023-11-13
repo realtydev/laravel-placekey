@@ -78,7 +78,7 @@ class PlacekeyService
         try {
             $response = self::$client->post($endpoint, [
                 'json' => $body,
-                'http_errors' => false // or true depends on how you want to handle http exceptions.
+                'http_errors' => false, // or true depends on how you want to handle http exceptions.
             ]);
 
             if ($response->getStatusCode() >= 400) {
@@ -90,5 +90,4 @@ class PlacekeyService
             throw new PlacekeyApiException($e->getMessage(), $e->getCode());
         }
     }
-
 }
