@@ -17,6 +17,11 @@ You can install the package via composer:
 composer require realtydev/laravel-placekey
 ```
 
+You can run the install command with:
+
+```bash
+php artisan placekey:install"
+```
 
 You can publish the config file with:
 
