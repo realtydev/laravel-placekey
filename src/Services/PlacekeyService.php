@@ -28,6 +28,26 @@ class PlacekeyService
         }
     }
 
+    public function setApiKey($api_key)
+    {
+        $this->client = new Client([
+            'base_uri' => $this->config['api_url'].'/'.$this->config['api_version'].'/',
+            'headers' => [
+                'apikey' => $api_key,
+                'Content-Type' => 'application/json',
+            ],
+        ]);
+
+        return $this;
+    }
+
+    public function getPlacekey($placekey)
+    {
+        $key = is_array($placekey) ? 'queries' : 'query';
+
+        return $this->sendRequest('placekey', [$key => $placekey]);
+    }
+
     public function getPlacekeyForCoordinates($latitude, $longitude, $queryId = null)
     {
         if ($latitude === null || $longitude === null) {
