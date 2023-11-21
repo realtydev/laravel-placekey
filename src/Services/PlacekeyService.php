@@ -30,7 +30,7 @@ class PlacekeyService
 
     public function setApiKey($api_key)
     {
-        $this->client = new Client([
+        self::$client = new Client([
             'base_uri' => $this->config['api_url'].'/'.$this->config['api_version'].'/',
             'headers' => [
                 'apikey' => $api_key,
