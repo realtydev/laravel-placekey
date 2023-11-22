@@ -18,19 +18,19 @@ class LaravelPlacekeyServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-placekey')
-            ->hasConfigFile(['laravel-placekey'])
-            ->hasInstallCommand(function (InstallCommand $command) {
-                $command
-                    ->startWith(function (InstallCommand $command) {
-                        $command->info('Hello, and welcome laravel placekey!');
-                    })
-                    ->publishConfigFile()
-                    ->copyAndRegisterServiceProviderInApp()
-                    ->askToStarRepoOnGitHub('realtydev/laravel-placekey')
-                    ->endWith(function (InstallCommand $command) {
-                        $command->info('Have a great day!');
-                    });
-            });
+            ->hasConfigFile(['laravel-placekey']);
+        // ->hasInstallCommand(function (InstallCommand $command) {
+        //     $command
+        //         ->startWith(function (InstallCommand $command) {
+        //             $command->info('Hello, and welcome laravel placekey!');
+        //         })
+        //         ->publishConfigFile()
+        //         ->copyAndRegisterServiceProviderInApp()
+        //         ->askToStarRepoOnGitHub('realtydev/laravel-placekey')
+        //         ->endWith(function (InstallCommand $command) {
+        //             $command->info('Have a great day!');
+        //         });
+        // });
 
     }
 
