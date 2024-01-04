@@ -40,4 +40,26 @@ return [
 
     'api_version' => 'v1',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Connect Timeout
+    |--------------------------------------------------------------------------
+    |
+    | This value is the connection timeout (in seconds) passed to the
+    | underlying HTTP client for making requests to the Placekey API.
+    |
+    */
+    // 'connect_timeout' => '5',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Read Timeout
+    |--------------------------------------------------------------------------
+    |
+    | This value is the read timeout (in seconds) passed to the
+    | underlying HTTP client for making requests to the Placekey API.
+    |
+    */
+    // 'read_timeout' => '5',
+
 ];
