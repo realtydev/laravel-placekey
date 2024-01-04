@@ -102,10 +102,10 @@ class PlacekeyService
                 'http_errors' => false, // or true depends on how you want to handle http exceptions.
             ];
 
-            if(isset($this->config['connect_timeout'])) {
+            if (isset($this->config['connect_timeout'])) {
                 $params['connect_timeout'] = $this->config['connect_timeout'];
             }
-            if(isset($this->config['read_timeout'])) {
+            if (isset($this->config['read_timeout'])) {
                 $params['read_timeout'] = $this->config['read_timeout'];
             }
 
