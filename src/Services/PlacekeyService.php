@@ -95,7 +95,7 @@ class PlacekeyService
             }
         }
 
-        return $this->sendRequest('placekey', [
+        return $this->sendRequest('placekeys', [
             'queries' => $addresses,
         ]);
     }
