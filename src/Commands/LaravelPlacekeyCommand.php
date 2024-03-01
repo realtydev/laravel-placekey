@@ -60,6 +60,15 @@ class LaravelPlacekeyCommand extends Command
                         return;
                     }
                     break;
+                case 'addresses':
+                    if (is_array($parameters) && count($parameters) >= 1) {
+                        $response = $this->service->getPlacekeysForAddresses($parameters);
+                    } else {
+                        $this->error('Invalid parameters. The address action requires at least 1 parameter.');
+
+                        return;
+                    }
+                    break;
                 case 'lineage':
                     if (is_array($parameters) && count($parameters) >= 2 && count($parameters) <= 5) {
                         $response = $this->service->getActivePlacekeyAndPredecessors(...$parameters);
