@@ -88,6 +88,13 @@ class PlacekeyService
 
     public function getPlacekeysForAddresses($addresses)
     {
+        // ensure that the addresses have street_address, city, region, postal_code, iso_country_code, and unique id
+        foreach ($addresses as $address) {
+            if (! isset($address['street_address'], $address['city'], $address['region'], $address['postal_code'], $address['iso_country_code'], $address['query_id'])) {
+                throw new \InvalidArgumentException('Street address, city, region, postal code, iso country code, and query id are required');
+            }
+        }
+
         return $this->sendRequest('placekey', [
             'queries' => $addresses,
         ]);
