@@ -86,6 +86,13 @@ class PlacekeyService
         ]);
     }
 
+    public function getPlacekeysForAddresses($addresses)
+    {
+        return $this->sendRequest('placekey', [
+            'queries' => $addresses,
+        ]);
+    }
+
     public function getCurrentActivePlacekeyAndPredecessors($placekeys)
     {
 

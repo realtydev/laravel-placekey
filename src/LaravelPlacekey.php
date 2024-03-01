@@ -29,6 +29,11 @@ class LaravelPlacekey
         return $result;
     }
 
+    public function getPlacekeysForAddresses($addresses)
+    {
+        return $this->placekeyService->getPlacekeysForAddresses($addresses);
+    }
+
     public function getCurrentActivePlacekeyAndPredecessors($placekeys)
     {
         return $this->placekeyService->getCurrentActivePlacekeyAndPredecessors($placekeys);
