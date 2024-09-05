@@ -83,7 +83,7 @@ class PlacekeyService
 
         return $this->sendRequest('placekey', [
             'query' => $query,
-            'options' => ['fields' => ['building_placekey', 'address_placekey']]
+            'options' => ['fields' => ['building_placekey', 'address_placekey']],
 
         ]);
     }
